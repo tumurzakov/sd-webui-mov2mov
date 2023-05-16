@@ -126,7 +126,7 @@ def infer2(modnet, img):
     image = np.asarray(img)
     h, w, _ = image.shape
     alpha = infer(modnet, image, max(h, w))
-    alpha_bool = (~alpha.astype(np.bool)).astype('int')
+    alpha_bool = (~alpha.astype(bool)).astype('int')
 
     alpha_uint8 = (alpha * 255).astype('uint8')
     new_image = np.concatenate((image, alpha_uint8[:, :, None]), axis=2)
